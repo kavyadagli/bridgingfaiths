@@ -1,0 +1,25 @@
+/*========================================================
+                        Camera
+=========================================================*/
+.camera_container {
+  position: relative;
+  padding-bottom: 10%;
+}
+/*.camera_container .brand {
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 30%;
+  text-align: center;
+}
+.camera_container .brand_name {
+  padding: 10px 20px 20px;
+  display: inline-block;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100px;
+  line-height: 220px;
+  font-weight: 400;
+  color: #ffffff;
+}*/
+
