@@ -470,7 +470,7 @@ a[href^="tel:"] {
 }
 /*==================  Stuck menu  ======================*/
 .isStuck {
-  background: #994f4f;
+  background: #7ECBDE;
   z-index: 999;
   border-bottom: 1px solid #333333;
 }
@@ -492,7 +492,7 @@ a[href^="tel:"] {
   font-size: 88px;
   line-height: 115px;
   color: #fff;
-  background: #b6b2b3;
+  background: #7ECBDE;
   position: fixed;
   right: 66px;
   bottom: 180px;
