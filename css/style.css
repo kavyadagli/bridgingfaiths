@@ -250,7 +250,7 @@ a[href^="tel:"] {
 .sf-menu {
   font-family: 'Open Sans', sans-serif;
   font-size: 24px;
-  /*line-height: 24px;*/
+  line-height: 24px;
   font-weight: 300;
   color: #8E8D89;
 }
@@ -472,7 +472,7 @@ a[href^="tel:"] {
 .isStuck {
   background: #7ECBDE;
   z-index: 999;
-  border-bottom: 1px solid #333333;
+  /*border-bottom: 1px solid #333333;*/
 }
 .isStuck .nav {
   margin: 24px 0 24px;
