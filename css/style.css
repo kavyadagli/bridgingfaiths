@@ -346,8 +346,8 @@ a[href^="tel:"] {
   height: 75px;
   font-size: 60px;
   line-height: 75px;
-color: #987D3E;  
-background: #8E8D89;
+  color: #000000;  
+  background: #8E8D89;
   text-align: center;
 }
 .toggle-menu-container .sf-menu-toggle:hover {
