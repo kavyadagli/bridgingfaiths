@@ -7,9 +7,6 @@
 =========================================================*/
 h1 { 
   position: fixed;
-  border-style: solid; 
-  border-color: #ffffff;
-  border-width: 2px;
   background: #7ECBDE;
   width: 100%;
   position: center;
