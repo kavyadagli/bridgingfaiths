@@ -4,12 +4,20 @@ jQuery(document).ready(function(){
 		projectsSlider = projectsContainer.children('.cd-slider'),
 		singleProjectContent = $('.cd-project-content'),
 		sliderNav = $('.cd-slider-navigation');
-
 	var resizing = false;
-	
+
 	//if on desktop - set a width for the projectsSlider element
 	setSliderContainer();
+// SHOW the panels right away...
+        intro.addClass('projects-visible');
+        projectsContainer.addClass('projects-visible');
+        //animate single project - entrance animation
+        setTimeout(function(){
+    	showProjectPreview(projectsSlider.children('li').eq(0));
+        }, 200);
+
 	$(window).on('resize', function(){
+               alert("in realize");
 		//on resize - update projectsSlider width and translate value
 		if( !resizing ) {
 			(!window.requestAnimationFrame) ? setSliderContainer() : window.requestAnimationFrame(setSliderContainer);
@@ -19,6 +27,7 @@ jQuery(document).ready(function(){
 
 	//show the projects slider if user clicks the show-projects button
 	intro.on('click', 'a[data-action="show-projects"]', function(event) {
+	        alert("click event");
 		event.preventDefault();
 		intro.addClass('projects-visible');
 		projectsContainer.addClass('projects-visible');
@@ -35,17 +44,46 @@ jQuery(document).ready(function(){
 			projectsContainer.removeClass('projects-visible');
 		}
 	});
+	//close items slider with button (as well as intro panel)
+	$('.cd-items-wrapper>a').on('click',function(event){
+		var $introPanel = $(this).parent();
+		var $introSlider = $introPanel.prev();
+		if( $introSlider.hasClass('items-visible') && $(event.target).is('a[data-action="close-items"]') ) {
+			$introSlider.removeClass('items-visible');
+			$introPanel.removeClass('items-visible');
+		}
+	});
+	//select a single item - open item-content panel
+	$('.cd-items-wrapper').on('click', '.cd-slider a', function(event) {
+		event.preventDefault();
+		var mq = checkMQ();
+		var item_id = $(this).attr('data-action');
+	        alert(item_id);
+		if( $(this).parent('li').next('li').is('.current') && mq === 'desktop') {
+			prevSides($itemsSlider);
+		} else if ( $(this).parent('li').prev('li').prev('li').prev('li').is('.current') && mq === 'desktop') {
+			nextSides($itemsSlider);
+		} else {
+			$('.cd-item-content#'+item_id).addClass('is-visible');
+//			$('.item2-content').addClass('is-visible');
+		}
+	});
 
 	//select a single project - open project-content panel
 	projectsContainer.on('click', '.cd-slider a', function(event) {
 		var mq = checkMQ();
 		event.preventDefault();
+		var item_id = $(this).attr('data-action');
 		if( $(this).parent('li').next('li').is('.current') && (mq == 'desktop') ) {
 			prevSides(projectsSlider);
 		} else if ( $(this).parent('li').prev('li').prev('li').prev('li').is('.current')  && (mq == 'desktop') ) {
 			nextSides(projectsSlider);
 		} else {
-			singleProjectContent.addClass('is-visible');
+			$("TESTCONTENT").addClass('is-visible');
+		        testSingleProjectContent = $('.cd-project-content#'+item_id),
+		        testSingleProjectContent.addClass('is-visible');
+//		        $('.cd-item-content#'+item_id).addClass('is-visible');
+//			singleProjectContent.addClass('is-visible');
 		}
 	});
 
@@ -97,6 +135,7 @@ jQuery(document).ready(function(){
 	function checkMQ() {
 		//check if mobile or desktop device
 		return window.getComputedStyle(document.querySelector('.cd-projects-wrapper'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
+//		return window.getComputedStyle(document.querySelector('.cd-items-wrapper'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
 	}
 
 	function setSliderContainer() {
