@@ -17,7 +17,6 @@ jQuery(document).ready(function(){
         }, 200);
 
 	$(window).on('resize', function(){
-               alert("in realize");
 		//on resize - update projectsSlider width and translate value
 		if( !resizing ) {
 			(!window.requestAnimationFrame) ? setSliderContainer() : window.requestAnimationFrame(setSliderContainer);
@@ -27,7 +26,6 @@ jQuery(document).ready(function(){
 
 	//show the projects slider if user clicks the show-projects button
 	intro.on('click', 'a[data-action="show-projects"]', function(event) {
-	        alert("click event");
 		event.preventDefault();
 		intro.addClass('projects-visible');
 		projectsContainer.addClass('projects-visible');
@@ -58,7 +56,6 @@ jQuery(document).ready(function(){
 		event.preventDefault();
 		var mq = checkMQ();
 		var item_id = $(this).attr('data-action');
-	        alert(item_id);
 		if( $(this).parent('li').next('li').is('.current') && mq === 'desktop') {
 			prevSides($itemsSlider);
 		} else if ( $(this).parent('li').prev('li').prev('li').prev('li').is('.current') && mq === 'desktop') {
